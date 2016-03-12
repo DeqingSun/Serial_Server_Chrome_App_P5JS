@@ -18,6 +18,10 @@ function initWebSocket() {
         var wsServer = new http.WebSocketServer(server);
         server.listen(port);
 
+        server.addEventListener('serverReady', function (socketInfo) {
+            AddOpenedSocketId(socketInfo.socketId);
+        });
+        
         server.addEventListener('request', function (req) {
             var url = req.headers.url;
             if (url == '/')

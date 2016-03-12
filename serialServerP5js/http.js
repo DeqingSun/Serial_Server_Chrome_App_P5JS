@@ -351,6 +351,7 @@ HttpServer.prototype = {
         function(result) {
           if (!result) {
             t.readyState_ = 1;
+            t.dispatchEvent('serverReady', socketInfo);
           }
           else {
             console.log(
